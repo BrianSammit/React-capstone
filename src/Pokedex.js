@@ -28,7 +28,6 @@ const Pokedex = (props) => {
   const [pokemonData, setPokemonData] = useState(mockData);
 
   const getPokemonCard = (pokemonId) => {
-    console.log(pokemonData[`${pokemonId}`]);
     const { id, name } = pokemonData[`${pokemonId}`];
     const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 
