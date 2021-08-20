@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, Typography } from '@material-ui/core';
+import {
+  AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import mockData from './mockData';
 
@@ -19,8 +21,10 @@ const useStyles = makeStyles({
 
 const toFirtsCharUpperCase = (name) => name.charAt(0).toUpperCase() + name.slice(1);
 
-const Pokedex = () => {
+const Pokedex = (props) => {
+  const { history } = props;
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
   const [pokemonData, setPokemonData] = useState(mockData);
 
   const getPokemonCard = (pokemonId) => {
@@ -30,7 +34,7 @@ const Pokedex = () => {
 
     return (
       <Grid item xs={4} key={pokemonId}>
-        <Card>
+        <Card onClick={() => history.push(`/${pokemonId}`)}>
           <CardMedia className={classes.cardMedia} image={sprite} style={{ width: '130px', height: '130px' }} />
           <CardContent className={classes.CardContent}>
             <Typography>{`${id}. ${toFirtsCharUpperCase(name)}`}</Typography>
@@ -42,7 +46,7 @@ const Pokedex = () => {
 
   return (
     <>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar />
       </AppBar>
       {pokemonData ? (
