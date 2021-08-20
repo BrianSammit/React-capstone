@@ -1,15 +1,14 @@
+/* eslint-disable object-curly-newline, no-unused-vars, react/forbid-prop-types, react/prop-types */
 import React, { useState } from 'react';
-import {
-  AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, Typography,
-} from '@material-ui/core';
+import { AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import mockData from './mockData';
+import toFirtCharUpperCase from './constants';
 
 const useStyles = makeStyles({
   pokedexContainer: {
     paddingTop: '20px',
-    paddingLeft: '50px',
-    paddingRigth: '50px',
+    padding: '50px',
   },
   cardMedia: {
     margin: 'auto',
@@ -19,12 +18,9 @@ const useStyles = makeStyles({
   },
 });
 
-const toFirtsCharUpperCase = (name) => name.charAt(0).toUpperCase() + name.slice(1);
-
 const Pokedex = (props) => {
   const { history } = props;
   const classes = useStyles();
-  // eslint-disable-next-line no-unused-vars
   const [pokemonData, setPokemonData] = useState(mockData);
 
   const getPokemonCard = (pokemonId) => {
@@ -36,7 +32,7 @@ const Pokedex = (props) => {
         <Card onClick={() => history.push(`/${pokemonId}`)}>
           <CardMedia className={classes.cardMedia} image={sprite} style={{ width: '130px', height: '130px' }} />
           <CardContent className={classes.CardContent}>
-            <Typography>{`${id}. ${toFirtsCharUpperCase(name)}`}</Typography>
+            <Typography>{`${id}. ${toFirtCharUpperCase(name)}`}</Typography>
           </CardContent>
         </Card>
       </Grid>
@@ -60,3 +56,5 @@ const Pokedex = (props) => {
 };
 
 export default Pokedex;
+
+/* eslint-enable object-curly-newline, no-unused-vars, react/forbid-prop-types */
