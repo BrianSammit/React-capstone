@@ -1,17 +1,29 @@
 /* eslint-disable object-curly-newline, no-unused-vars, react/forbid-prop-types,
-react/jsx-one-expression-per-line, camelcase */
+react/jsx-one-expression-per-line, camelcase, react/prop-types */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Link } from '@material-ui/core';
+import { Typography, Link, CircularProgress, Button } from '@material-ui/core';
+import axios from 'axios';
 import toFirtCharUpperCase from './constants';
-import mockData from './mockData';
 
 const Pokemon = (props) => {
-  const { match } = props;
+  const { history, match } = props;
   const { params } = match;
   const { pokemonId } = params;
-  const [pokemon, setPokemon] = useState(mockData[`${pokemonId}`]);
+  const [pokemon, setPokemon] = useState(undefined);
+
+  useEffect(() => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+      .then((response) => {
+        const { data } = response;
+        setPokemon(data);
+      })
+      .catch((error) => {
+        setPokemon(false);
+      });
+  }, [pokemonId]);
 
   const generatePokemonJSX = () => {
     const { name, id, species, height, weight, types, sprites } = pokemon;
@@ -41,7 +53,18 @@ const Pokemon = (props) => {
       </>
     );
   };
-  return <>{generatePokemonJSX()}</>;
+  return (
+    <>
+      {pokemon === undefined && <CircularProgress />}
+      {pokemon !== undefined && pokemon && generatePokemonJSX()}
+      {pokemon === false && <Typography>Pokemon no found</Typography>}
+      {pokemon !== undefined && (
+        <Button variant="contained" onClick={() => history.push('/')}>
+          back to pokedex
+        </Button>
+      )}
+    </>
+  );
 };
 
 Pokemon.propTypes = {
@@ -51,4 +74,4 @@ Pokemon.propTypes = {
 export default Pokemon;
 
 /* eslint-enable object-curly-newline, no-unused-vars, react/forbid-prop-types,
-react/jsx-one-expression-per-line, camelcase */
+react/jsx-one-expression-per-line, camelcase, react/prop-types */

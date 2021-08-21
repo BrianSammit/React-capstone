@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, Typography, Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import mockData from './mockData';
 import toFirtCharUpperCase from './constants';
 
 const useStyles = makeStyles({
