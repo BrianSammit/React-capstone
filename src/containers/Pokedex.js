@@ -4,7 +4,7 @@ import { AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
-import toFirtCharUpperCase from './constants';
+import toFirtCharUpperCase from '../constants/constants';
 
 const useStyles = makeStyles((theme) => ({
   pokedexContainer: {

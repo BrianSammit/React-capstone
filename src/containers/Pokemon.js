@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Link, CircularProgress, Button } from '@material-ui/core';
 import axios from 'axios';
-import toFirtCharUpperCase from './constants';
+import toFirtCharUpperCase from '../constants/constants';
 
 const Pokemon = (props) => {
   const { history, match } = props;

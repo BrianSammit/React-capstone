@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Pokedex from './Pokedex';
-import Pokemon from './Pokemon';
+import Pokemon from './containers/Pokemon';
+import Pokedex from './containers/Pokedex';
 
 /* eslint-disable react/jsx-props-no-spreading */
 
