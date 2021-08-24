@@ -1,77 +1,88 @@
-/* eslint-disable object-curly-newline, no-unused-vars, react/forbid-prop-types,
-react/jsx-one-expression-per-line, camelcase, react/prop-types */
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Typography, Link, CircularProgress, Button } from '@material-ui/core';
-import axios from 'axios';
+import { fetchPokemonDetails } from '../actions/getData';
 import toFirtCharUpperCase from '../constants/constants';
 
 const Pokemon = (props) => {
-  const { history, match } = props;
-  const { params } = match;
-  const { pokemonId } = params;
-  const [pokemon, setPokemon] = useState(undefined);
+  const { match } = props;
+  const pokeID = match.params.pokemonId;
+  const detail = useSelector((state) => state.detail);
+  const { pokedetail, loading } = detail;
+  const dispatch = useDispatch();
+  const fullImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokedetail.id}.svg`;
 
   useEffect(() => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
-      .then((response) => {
-        const { data } = response;
-        setPokemon(data);
-      })
-      .catch((error) => {
-        setPokemon(false);
-      });
-  }, [pokemonId]);
+    dispatch(fetchPokemonDetails(pokeID));
+  }, []);
 
-  const generatePokemonJSX = () => {
-    const { name, id, species, height, weight, types, sprites } = pokemon;
-    const fullImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
-    const { front_default } = sprites;
-
-    return (
-      <>
-        <Typography variant="h1">
-          {`${id}.`} {toFirtCharUpperCase(name)}
-          <img alt="" src={front_default} />
-        </Typography>
-        <img style={{ width: '300px', height: '300px' }} src={fullImageUrl} alt="" />
-        <Typography variant="h3">Pokemon info</Typography>
-        <Typography>
-          Species
-          <Link href={species.url}>{species.name}</Link>
-        </Typography>
-        <Typography>Height: {height} </Typography>
-        <Typography>Weight: {weight} </Typography>
-        <Typography variant="h6"> Types:</Typography>
-        {types.map((typeInfo) => {
-          const { type } = typeInfo;
-          const { name } = type;
-          return <Typography key={name}> {`${name}`}</Typography>;
-        })}
-      </>
-    );
-  };
   return (
-    <>
-      {pokemon === undefined && <CircularProgress />}
-      {pokemon !== undefined && pokemon && generatePokemonJSX()}
-      {pokemon === false && <Typography>Pokemon no found</Typography>}
-      {pokemon !== undefined && (
-        <Button variant="contained" onClick={() => history.push('/')}>
-          back to pokedex
-        </Button>
+    <div className="container-detail">
+      {!loading && !!detail ? (
+        <div className="detailCard">
+          <div className="detail-title">
+            <h1>
+              {`${pokedetail.id}.`}
+              {toFirtCharUpperCase(pokedetail.name)}
+            </h1>
+            <img src={pokedetail.sprites.front_default} alt="pokemonLogo" />
+          </div>
+          <img className="detail-image" src={fullImageUrl} alt="pokemonImage" />
+          <Typography variant="h3">Pokemon Info</Typography>
+          <Typography>
+            {'Species: '}
+            <Link className="detail-link" to={pokedetail.species.url}>
+              {pokedetail.name}
+            </Link>
+          </Typography>
+          <Typography className="details">
+            Height:
+            {pokedetail.height}
+          </Typography>
+          <Typography className="details">
+            Weight:
+            {pokedetail.weight}
+          </Typography>
+          <div className="types-cont">
+            <Typography variant="h6"> Types:</Typography>
+            {pokedetail.types.map((typeInfo) => {
+              const { type } = typeInfo;
+              const { name } = type;
+              // eslint-disable-next-line react/jsx-one-expression-per-line
+              return (
+                <Typography key={name} className="detail-types">
+                  {' '}
+                  {`${name}`}
+                </Typography>
+              );
+            })}
+          </div>
+          <Link to="/" className="backbtn">
+            back to pokedex
+          </Link>
+        </div>
+      ) : (
+        <div className="detailCard1">
+          <h1 className="title-notfound">Pokemon Not Found</h1>
+          <img
+            className="notfound-img"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc7-yFH2sIlZAkCDB8_jcV040NBr4blWq-cTC81hqyQzLW4wAfm7M8Igbp4thtcOKu944&usqp=CAU"
+            alt="pokemonpensante"
+          />
+          <Link to="/" className="backbtn1">
+            back to pokedex
+          </Link>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
 Pokemon.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   match: PropTypes.any.isRequired,
 };
 
 export default Pokemon;
-
-/* eslint-enable object-curly-newline, no-unused-vars, react/forbid-prop-types,
-react/jsx-one-expression-per-line, camelcase, react/prop-types */

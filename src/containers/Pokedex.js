@@ -1,102 +1,96 @@
-/* eslint-disable object-curly-newline, no-unused-vars, react/forbid-prop-types, react/prop-types, max-len */
 import React, { useState, useEffect } from 'react';
-import { AppBar, Grid, Toolbar, Card, CardContent, CircularProgress, CardMedia, Typography, Input, TextField } from '@material-ui/core';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  Card, CardMedia, CardContent, Typography, TextField,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import axios from 'axios';
-import toFirtCharUpperCase from '../constants/constants';
+import { fetchPokemonAsync, fetchNextPagePokemon } from '../actions/getData';
+import Pagination from '../components/Pagination';
+import toFirstCharUpperCase from '../constants/constants';
 
-const useStyles = makeStyles((theme) => ({
-  pokedexContainer: {
-    paddingTop: '20px',
-    padding: '50px',
-  },
+let url = 'https://pokeapi.co/api/v2/pokemon?limit=12';
+
+const useStyles = makeStyles(() => ({
   cardMedia: {
     margin: 'auto',
   },
-  CardContent: {
+  cardContent: {
     textAlign: 'center',
-  },
-  searchContainer: {
-    display: 'flex',
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    paddingLeft: '20px',
-    paddingRight: '20px',
-    marginTop: '5px',
-    marginBottom: '5px',
-  },
-  searchIcon: {
-    alignSelf: 'flex-end',
-    marginBottom: '5px',
-  },
-  searchInput: {
-    width: '200px',
-    margin: '5px',
   },
 }));
 
-const Pokedex = (props) => {
-  const { history } = props;
+const Pokedex = () => {
   const classes = useStyles();
-  const [pokemonData, setPokemonData] = useState({});
+  const page = useSelector((state) => state.page);
+  const pokemon = useSelector((state) => state.pokemon);
+  const dispatch = useDispatch();
   const [filter, setFilter] = useState('');
 
   const handleSearchChange = (e) => {
     setFilter(e.target.value);
   };
 
-  useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=898').then((response) => {
-      const { data } = response;
-      const { results } = data;
-      const newPokemonData = {};
-      results.forEach((pokemon, index) => {
-        newPokemonData[index + 1] = {
-          id: index + 1,
-          name: pokemon.name,
-          sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
-        };
-      });
-      setPokemonData(newPokemonData);
-    });
-  }, []);
-
-  const getPokemonCard = (pokemonId) => {
-    const { id, name, sprite } = pokemonData[pokemonId];
-
-    return (
-      <Grid item xs={4} key={pokemonId}>
-        <Card onClick={() => history.push(`/${pokemonId}`)}>
-          <CardMedia className={classes.cardMedia} image={sprite} style={{ width: '130px', height: '130px' }} />
-          <CardContent className={classes.CardContent}>
-            <Typography>{`${id}. ${toFirtCharUpperCase(name)}`}</Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    );
+  const nextPage = () => {
+    url = page.next;
+    dispatch(fetchPokemonAsync(url));
+  };
+  const previousPage = () => {
+    if (page.previous) {
+      url = page.previous;
+      dispatch(fetchPokemonAsync(url));
+    }
   };
 
+  useEffect(() => {
+    dispatch(fetchNextPagePokemon(url));
+  }, [url]);
+
+  useEffect(() => {
+    dispatch(fetchPokemonAsync(url));
+  }, [url]);
+
   return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <div className={classes.searchContainer}>
-            <SearchIcon className={classes.searchIcon} />
-            <TextField className={classes.searchInput} onChange={handleSearchChange} label="Pokemon" variant="standard" />
-          </div>
-        </Toolbar>
-      </AppBar>
-      {pokemonData ? (
-        <Grid container spacing={2} className={classes.pokedexContainer}>
-          {Object.keys(pokemonData).map((pokemonId) => pokemonData[pokemonId].name.includes(filter) && getPokemonCard(pokemonId))}
-        </Grid>
-      ) : (
-        <CircularProgress />
-      )}
-    </>
+    <div className="pokedex-container" id="top">
+      <div className="SearchBar">
+        <div className="search-cont">
+          <SearchIcon className="searchicon" />
+          <TextField className="input-search" label="Pokemon" onChange={handleSearchChange} />
+        </div>
+        <Pagination nextPage={nextPage || null} previousPage={previousPage || null} />
+      </div>
+      <div className="pokecontainer">
+        {pokemon ? (
+          pokemon.map(
+            (p) => p.name.includes(filter) && (
+            <div className="pokecard" key={p.name}>
+              <Card className="poke-data">
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`}
+                  style={{ width: '130px', height: '130px' }}
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography>
+                    {p.id}
+                    .
+                    {toFirstCharUpperCase(p.name)}
+                  </Typography>
+                </CardContent>
+                <Link className="info-link" to={`${p.id}`}>
+                  Info
+                </Link>
+              </Card>
+            </div>
+            ),
+          )
+        ) : (
+          <p>Hi</p>
+        )}
+      </div>
+    </div>
   );
 };
 
 export default Pokedex;
-
-/* eslint-enable object-curly-newline, no-unused-vars, react/forbid-prop-types, max-len */
