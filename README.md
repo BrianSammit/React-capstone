@@ -41,7 +41,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 # Demo link
 
-[Demo](https://app.netlify.com/sites/xenodochial-mcnulty-500e64/overview)
+[Demo](https://xenodochial-mcnulty-500e64.netlify.app/)
 
 ## Author
 
