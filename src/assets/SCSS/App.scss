@@ -47,12 +47,13 @@
   .SearchBar {
     height: 2.55rem;
     background: rgb(164, 0, 8);
-    background: linear-gradient(
-      90deg,
-      rgba(164, 0, 8, 1) 0%,
-      rgba(59, 14, 61, 1) 47%,
-      rgba(0, 22, 85, 1) 100%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        rgba(164, 0, 8, 1) 0%,
+        rgba(59, 14, 61, 1) 47%,
+        rgba(0, 22, 85, 1) 100%
+      );
     display: flex;
     align-items: center;
     width: 60%;
@@ -101,12 +102,13 @@
       }
 
       button:hover {
-        background: linear-gradient(
-          90deg,
-          rgba(164, 0, 8, 1) 0%,
-          rgba(59, 14, 61, 1) 47%,
-          rgba(0, 22, 85, 1) 100%
-        );
+        background:
+          linear-gradient(
+            90deg,
+            rgba(164, 0, 8, 1) 0%,
+            rgba(59, 14, 61, 1) 47%,
+            rgba(0, 22, 85, 1) 100%
+          );
       }
 
       button:active {
@@ -151,12 +153,13 @@
         }
 
         .info-link:hover {
-          background: linear-gradient(
-            90deg,
-            rgba(164, 0, 8, 1) 0%,
-            rgba(59, 14, 61, 1) 47%,
-            rgba(0, 22, 85, 1) 100%
-          );
+          background:
+            linear-gradient(
+              90deg,
+              rgba(164, 0, 8, 1) 0%,
+              rgba(59, 14, 61, 1) 47%,
+              rgba(0, 22, 85, 1) 100%
+            );
         }
       }
     }
