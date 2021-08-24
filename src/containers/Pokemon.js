@@ -23,19 +23,14 @@ const Pokemon = (props) => {
       {!loading && !!detail ? (
         <div className="detailCard">
           <div className="detail-title">
-            <h1>
-              {`${pokedetail.id}.`}
-              {toFirtCharUpperCase(pokedetail.name)}
-            </h1>
+            <h1>{toFirtCharUpperCase(pokedetail.name)}</h1>
             <img src={pokedetail.sprites.front_default} alt="pokemonLogo" />
           </div>
           <img className="detail-image" src={fullImageUrl} alt="pokemonImage" />
-          <Typography variant="h3">Pokemon Info</Typography>
+          <Typography variant="h4">Pokemon Info</Typography>
           <Typography>
             {'Species: '}
-            <Link className="detail-link" to={pokedetail.species.url}>
-              {pokedetail.name}
-            </Link>
+            <div className="detail-link">{pokedetail.name}</div>
           </Typography>
           <Typography className="details">
             Height:
@@ -46,7 +41,7 @@ const Pokemon = (props) => {
             {pokedetail.weight}
           </Typography>
           <div className="types-cont">
-            <Typography variant="h6"> Types:</Typography>
+            <Typography variant="h5"> Types:</Typography>
             {pokedetail.types.map((typeInfo) => {
               const { type } = typeInfo;
               const { name } = type;

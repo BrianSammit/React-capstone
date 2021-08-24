@@ -47,13 +47,12 @@
   .SearchBar {
     height: 2.55rem;
     background: rgb(164, 0, 8);
-    background:
-      linear-gradient(
-        90deg,
-        rgba(164, 0, 8, 1) 0%,
-        rgba(59, 14, 61, 1) 47%,
-        rgba(0, 22, 85, 1) 100%
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(164, 0, 8, 1) 0%,
+      rgba(59, 14, 61, 1) 47%,
+      rgba(0, 22, 85, 1) 100%
+    );
     display: flex;
     align-items: center;
     width: 60%;
@@ -102,13 +101,12 @@
       }
 
       button:hover {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(164, 0, 8, 1) 0%,
-            rgba(59, 14, 61, 1) 47%,
-            rgba(0, 22, 85, 1) 100%
-          );
+        background: linear-gradient(
+          90deg,
+          rgba(164, 0, 8, 1) 0%,
+          rgba(59, 14, 61, 1) 47%,
+          rgba(0, 22, 85, 1) 100%
+        );
       }
 
       button:active {
@@ -153,13 +151,12 @@
         }
 
         .info-link:hover {
-          background:
-            linear-gradient(
-              90deg,
-              rgba(164, 0, 8, 1) 0%,
-              rgba(59, 14, 61, 1) 47%,
-              rgba(0, 22, 85, 1) 100%
-            );
+          background: linear-gradient(
+            90deg,
+            rgba(164, 0, 8, 1) 0%,
+            rgba(59, 14, 61, 1) 47%,
+            rgba(0, 22, 85, 1) 100%
+          );
         }
       }
     }
@@ -201,7 +198,7 @@
 }
 
 .container-detail {
-  padding: 6rem 0;
+  padding: 1rem 0;
 
   .detailCard1 {
     margin: 2rem auto;
@@ -252,9 +249,10 @@
   }
 
   .detailCard {
-    margin: 2rem auto;
-    width: 60%;
-    background: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    width: 80%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
     text-align: center;
     border-radius: 2rem;
 
@@ -264,34 +262,31 @@
       align-items: center;
 
       h1 {
-        color: #2e466e;
+        color: white;
+        font-size: 50px;
       }
     }
 
     .detail-image {
-      width: 18rem;
-      height: 18rem;
+      width: 12rem;
+      height: 12rem;
     }
 
     .detail-link {
-      box-shadow: inset 0 1px 0 0 #23395e;
-      background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-      background-color: #2e466e;
+      background: linear-gradient(
+        90deg,
+        rgba(164, 0, 8, 1) 0%,
+        rgba(59, 14, 61, 1) 47%,
+        rgba(0, 22, 85, 1) 100%
+      );
       border-radius: 6px;
       border: 1px solid #1f2f47;
       display: inline-block;
-      cursor: pointer;
       color: #fff;
       font-size: 15px;
       font-weight: bold;
       padding: 6px 24px;
       text-decoration: none;
-      text-shadow: 0 1px 0 #263666;
-    }
-
-    .detail-link:hover {
-      background: linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-      background-color: #415989;
     }
 
     .detail-link:active {
@@ -311,13 +306,16 @@
       }
 
       .detail-types {
-        box-shadow: inset 0 0 15px 3px #1564ad;
-        background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+        background: linear-gradient(
+          90deg,
+          rgba(164, 0, 8, 1) 0%,
+          rgba(59, 14, 61, 1) 47%,
+          rgba(0, 22, 85, 1) 100%
+        );
         background-color: #79bbff;
         border-radius: 17px;
         border: 1px solid #337bc4;
         display: inline-block;
-        cursor: pointer;
         color: #fff;
         font-size: 15px;
         padding: 6px 13px;
@@ -325,25 +323,13 @@
         text-shadow: 0 1px 0 #528ecc;
         margin-right: 1rem;
       }
-
-      .detail-types:hover {
-        background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-        background-color: #378de5;
-      }
-
-      .detail-types:active {
-        position: relative;
-        top: 1px;
-      }
     }
 
     .backbtn {
       margin-bottom: 1rem;
-      box-shadow: inset 0 1px 0 0 #cf866c;
-      background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
-      background-color: #d0451b;
+      background-color: rgba(164, 0, 8, 1);
       border-radius: 3px;
-      border: 1px solid #942911;
+      border: 1px solid rgba(164, 0, 8, 1);
       display: inline-block;
       cursor: pointer;
       color: #fff;
@@ -354,8 +340,7 @@
     }
 
     .backbtn:hover {
-      background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
-      background-color: #bc3315;
+      background: rgb(186, 9, 18);
     }
 
     .backbtn:active {
@@ -368,7 +353,7 @@
 @media screen and (max-width: 768px) {
   .pokedex-container {
     .SearchBar {
-      width: 70%;
+      width: 90%;
 
       .search-cont {
         margin-left: 0;
@@ -376,7 +361,10 @@
     }
 
     .pokecontainer {
+      width: auto;
       grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      margin: 10px;
 
       .pokecard {
         width: 100%;
@@ -445,7 +433,7 @@
     }
 
     .pokecontainer {
-      grid-template-columns: 14rem;
+      grid-template-columns: 18rem;
 
       .pokecard {
         width: 100%;
