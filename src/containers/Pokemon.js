@@ -42,7 +42,6 @@ const Pokemon = (props) => {
               // eslint-disable-next-line react/jsx-one-expression-per-line
               return (
                 <Typography key={name} className="detail-types">
-                  {' '}
                   {`${name}`}
                 </Typography>
               );
@@ -56,7 +55,6 @@ const Pokemon = (props) => {
               // eslint-disable-next-line react/jsx-one-expression-per-line
               return (
                 <Typography key={name} className="detail-types">
-                  {' '}
                   {`${name}`}
                 </Typography>
               );

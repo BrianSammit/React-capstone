@@ -32,12 +32,19 @@
       list-style: none;
 
       .link {
-        color: whitesmoke;
         text-decoration: none;
-        font-size: 1.5rem;
-        background-color: transparent;
-        margin-right: 1rem;
-        font-weight: bold;
+
+        h1 {
+          color: whitesmoke;
+          background-color: transparent;
+          font-weight: bold;
+        }
+
+        h1:hover {
+          color: rgba(59, 14, 61, 1);
+          background-color: transparent;
+          font-weight: bold;
+        }
       }
     }
   }
