@@ -23,7 +23,7 @@ const Pokemon = (props) => {
       {!loading && !!detail ? (
         <div className="detailCard">
           <div className="detail-title">
-            <h1>{toFirtCharUpperCase(pokedetail.name)}</h1>
+            <h2>{toFirtCharUpperCase(pokedetail.name)}</h2>
             <img src={pokedetail.sprites.front_default} alt="pokemonLogo" />
           </div>
           <img className="detail-image" src={fullImageUrl} alt="pokemonImage" />
