@@ -28,18 +28,26 @@ const Pokemon = (props) => {
           </div>
           <img className="detail-image" src={fullImageUrl} alt="pokemonImage" />
           <Typography variant="h4">Pokemon Info</Typography>
-          <Typography>
-            {'Species: '}
-            <div className="detail-link">{pokedetail.name}</div>
-          </Typography>
-          <Typography className="details">
-            Height:
-            {pokedetail.height}
-          </Typography>
-          <Typography className="details">
-            Weight:
-            {pokedetail.weight}
-          </Typography>
+          <div className="types-cont">
+            <Typography>
+              {'Species: '}
+              <div className="detail-link">{pokedetail.name}</div>
+            </Typography>
+          </div>
+          <div className="types-cont">
+            <Typography variant="h5"> Abilities:</Typography>
+            {pokedetail.abilities.map((typeInfo) => {
+              const { ability } = typeInfo;
+              const { name } = ability;
+              // eslint-disable-next-line react/jsx-one-expression-per-line
+              return (
+                <Typography key={name} className="detail-types">
+                  {' '}
+                  {`${name}`}
+                </Typography>
+              );
+            })}
+          </div>
           <div className="types-cont">
             <Typography variant="h5"> Types:</Typography>
             {pokedetail.types.map((typeInfo) => {
