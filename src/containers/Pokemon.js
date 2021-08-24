@@ -29,7 +29,7 @@ const Pokemon = (props) => {
           <img className="detail-image" src={fullImageUrl} alt="pokemonImage" />
           <Typography variant="h4">Pokemon Info</Typography>
           <div className="types-cont">
-            <Typography>
+            <Typography component="span">
               {'Species: '}
               <div className="detail-link">{pokedetail.name}</div>
             </Typography>
