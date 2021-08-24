@@ -86,7 +86,7 @@ const Pokedex = () => {
             ),
           )
         ) : (
-          <p>Hi</p>
+          <div />
         )}
       </div>
     </div>
