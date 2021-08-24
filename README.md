@@ -1,6 +1,6 @@
 # Cataloge of pokemons
 
-In this project I use React and Redux to build a Bookstore application. Is a complete fron_end application for magic-books ltd that is a fictional company based in Germany
+Pokedex it's a catalogue of pokemons where you can find all the pokemons and see all pokemons individualy, In every pokemon info you can find Specie, Abilities, and Type. I build this project with React and Redux and PokeAPI.
 
 ## Screenshot
 
@@ -41,7 +41,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 # Demo link
 
-[Demo]()
+[Demo](https://app.netlify.com/sites/xenodochial-mcnulty-500e64/overview)
 
 ## Author
 
