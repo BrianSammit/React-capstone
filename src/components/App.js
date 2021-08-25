@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './NavBar';
@@ -11,8 +10,8 @@ const App = () => (
     <Router>
       <NavBar />
       <Switch>
-        <Route exact path="/" render={(props) => <Pokedex {...props} />} />
-        <Route exact path="/:pokemonId" render={(props) => <Pokemon {...props} />} />
+        <Route exact path="/" component={Pokedex} />
+        <Route exact path="/:pokemonId" component={Pokemon} />
       </Switch>
     </Router>
   </div>
