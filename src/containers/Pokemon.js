@@ -69,8 +69,8 @@ const Pokemon = (props) => {
           <h1 className="title-notfound">Pokemon Not Found</h1>
           <img
             className="notfound-img"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc7-yFH2sIlZAkCDB8_jcV040NBr4blWq-cTC81hqyQzLW4wAfm7M8Igbp4thtcOKu944&usqp=CAU"
-            alt="pokemonpensante"
+            src="https://as01.epimg.net/epik/imagenes/2018/11/16/portada/1542384053_864693_1542384302_noticia_normal.jpg"
+            alt="not found"
           />
           <Link to="/" className="backbtn1">
             back to pokedex
