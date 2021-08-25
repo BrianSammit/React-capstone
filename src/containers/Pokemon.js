@@ -39,7 +39,7 @@ const Pokemon = (props) => {
             {pokedetail.abilities.map((typeInfo) => {
               const { ability } = typeInfo;
               const { name } = ability;
-              // eslint-disable-next-line react/jsx-one-expression-per-line
+
               return (
                 <Typography key={name} className="detail-types">
                   {`${name}`}
@@ -52,7 +52,7 @@ const Pokemon = (props) => {
             {pokedetail.types.map((typeInfo) => {
               const { type } = typeInfo;
               const { name } = type;
-              // eslint-disable-next-line react/jsx-one-expression-per-line
+
               return (
                 <Typography key={name} className="detail-types">
                   {`${name}`}
