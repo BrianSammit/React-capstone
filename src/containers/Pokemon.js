@@ -80,7 +80,7 @@ const Pokemon = (props) => {
 };
 
 Pokemon.propTypes = {
-  match: PropTypes.string.isRequired,
+  match: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default Pokemon;

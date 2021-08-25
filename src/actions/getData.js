@@ -18,21 +18,13 @@ const fetchNextPagePokemon = (url) => (dispatch) => {
 };
 
 const fetchPokemonAsync = (url) => (dispatch) => {
-  axios
-    .get(url)
-    .then((res) => dispatch(fetchPokemonSuccess(NormalizerData(res.data.results))))
-    .catch((error) => {
-      throw new Error(error);
-    });
+  axios.get(url).then((res) => dispatch(fetchPokemonSuccess(NormalizerData(res.data.results))));
 };
 
 const fetchPokemonDetails = (id) => (dispatch) => {
   axios
     .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    .then((resp) => dispatch(fetchDetailsSuccess(resp.data)))
-    .catch((error) => {
-      throw new Error(error);
-    });
+    .then((resp) => dispatch(fetchDetailsSuccess(resp.data)));
 };
 
 const fetchCategoriesStartAsync = () => (dispatch) => {
