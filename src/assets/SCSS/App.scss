@@ -54,13 +54,12 @@
   .SearchBar {
     height: 2.55rem;
     background: rgb(164, 0, 8);
-    background:
-      linear-gradient(
-        90deg,
-        rgba(164, 0, 8, 1) 0%,
-        rgba(59, 14, 61, 1) 47%,
-        rgba(0, 22, 85, 1) 100%
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(164, 0, 8, 1) 0%,
+      rgba(59, 14, 61, 1) 47%,
+      rgba(0, 22, 85, 1) 100%
+    );
     display: flex;
     align-items: center;
     width: 60%;
@@ -109,13 +108,12 @@
       }
 
       button:hover {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(164, 0, 8, 1) 0%,
-            rgba(59, 14, 61, 1) 47%,
-            rgba(0, 22, 85, 1) 100%
-          );
+        background: linear-gradient(
+          90deg,
+          rgba(164, 0, 8, 1) 0%,
+          rgba(59, 14, 61, 1) 47%,
+          rgba(0, 22, 85, 1) 100%
+        );
       }
 
       button:active {
@@ -160,13 +158,12 @@
         }
 
         .info-link:hover {
-          background:
-            linear-gradient(
-              90deg,
-              rgba(164, 0, 8, 1) 0%,
-              rgba(59, 14, 61, 1) 47%,
-              rgba(0, 22, 85, 1) 100%
-            );
+          background: linear-gradient(
+            90deg,
+            rgba(164, 0, 8, 1) 0%,
+            rgba(59, 14, 61, 1) 47%,
+            rgba(0, 22, 85, 1) 100%
+          );
         }
       }
     }
@@ -208,7 +205,7 @@
 }
 
 .container-detail {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 
   .detailCard1 {
     margin: 2rem auto;
@@ -283,13 +280,12 @@
     }
 
     .detail-link {
-      background:
-        linear-gradient(
-          90deg,
-          rgba(164, 0, 8, 1) 0%,
-          rgba(59, 14, 61, 1) 47%,
-          rgba(0, 22, 85, 1) 100%
-        );
+      background: linear-gradient(
+        90deg,
+        rgba(164, 0, 8, 1) 0%,
+        rgba(59, 14, 61, 1) 47%,
+        rgba(0, 22, 85, 1) 100%
+      );
       border-radius: 6px;
       border: 1px solid #1f2f47;
       display: inline-block;
@@ -315,13 +311,12 @@
       }
 
       .detail-types {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(164, 0, 8, 1) 0%,
-            rgba(59, 14, 61, 1) 47%,
-            rgba(0, 22, 85, 1) 100%
-          );
+        background: linear-gradient(
+          90deg,
+          rgba(164, 0, 8, 1) 0%,
+          rgba(59, 14, 61, 1) 47%,
+          rgba(0, 22, 85, 1) 100%
+        );
         background-color: #79bbff;
         border-radius: 17px;
         border: 1px solid #337bc4;
