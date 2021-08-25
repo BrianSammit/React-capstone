@@ -12,7 +12,6 @@ const Pokemon = (props) => {
   const detail = useSelector((state) => state.detail);
   const { pokedetail, loading } = detail;
   const dispatch = useDispatch();
-  const fullImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokedetail.id}.svg`;
 
   useEffect(() => {
     dispatch(fetchPokemonDetails(pokeID));
@@ -24,9 +23,8 @@ const Pokemon = (props) => {
         <div className="detailCard">
           <div className="detail-title">
             <h2>{toFirtCharUpperCase(pokedetail.name)}</h2>
-            <img src={pokedetail.sprites.front_default} alt="pokemonLogo" />
           </div>
-          <img className="detail-image" src={fullImageUrl} alt="pokemonImage" />
+          <img className="detail-image" src={pokedetail.sprites.front_default} alt="pokemonLogo" />
           <Typography variant="h4">Pokemon Info</Typography>
           <div className="types-cont">
             <Typography component="span">
